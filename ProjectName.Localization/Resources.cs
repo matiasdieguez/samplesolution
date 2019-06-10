@@ -27,7 +27,10 @@ namespace ProjectName.Localization
 
         Index,
         About,
-        Help
+        Help,
+        Contact,
+        Legal,
+        EmailClient
 
     }
 }
