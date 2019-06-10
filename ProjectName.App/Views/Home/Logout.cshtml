@@ -1,0 +1,15 @@
+@using ProjectName.Localization
+
+    <div class="container-login">
+            <div class="log-out">
+                <div>
+                    <span class="title">@Localizer.Get(Resources.AppLoggedOutText)</span>
+                    <span class="subtitle">Si quieres volver a ingresar</span>
+                    <div style="margin-top: 5vh;">
+                        <a class="button-header" asp-area="" asp-controller="Home" asp-action="Login">@Localizer.Get(Resources.AppLoginTitle)</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+

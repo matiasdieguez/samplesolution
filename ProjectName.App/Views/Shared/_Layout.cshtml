@@ -1,0 +1,115 @@
+﻿@using ProjectName.Localization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProjectName.App</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+       <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body style="padding:0;left:0;margin:0;top:0;">
+    <div class="main-flex-container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="height:100px; display:block; margin-bottom:0;position:static;min-height:100px!important;">
+            <div class="container-layout">
+                <div class="navbar-header">
+                    <a asp-controller="Home" asp-action="Index"><img src="~/images/logo-nav.png" class="img-nav"></a>
+                    <div class="container-icons-nav">
+                        <a asp-controller="Home" asp-action="Login" class="login-md"><i class="fas fa-user"></i></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"><i class="fas fa-align-justify"></i></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="item-nav">
+                            <a asp-controller="Home" asp-action="Index" id="index">@Localizer.Get(Resources.Index)</a>
+                            <img src="~/images/nav-img.svg" id="mark-nav-i"/>
+                        </li>
+                        <li class="item-nav">
+                            <a asp-controller="Home" asp-action="About" id="about">@Localizer.Get(Resources.About)</a>
+                            <img src="~/images/nav-img.svg" id="mark-nav-a"/>
+                        </li>
+                    </ul>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                    <div class="nav-client-dp"> 
+                        <a class="login-nav" asp-controller="Home" asp-action="Login"><i class="fas fa-user"></i> Ingresar</a>
+                    </div>
+                    <div class="container-btn-logout">
+                        <form asp-controller="Home" asp-action="LogoutUser" method="post">
+                            <input type = "submit" value = "@Localizer.Get(Resources.AppLogOut)"/> 
+                            </form>
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="nav-client-dp">
+                        <a class="login-nav" asp-controller="Home" asp-action="Profile">@User.Identities.FirstOrDefault().Name
+                            <form asp-controller="Home" asp-action="LogoutUser" method="post" style="display:inline-block;">
+                         <button  class="log-out-btn" type="submit"><i class="fas fa-sign-out-alt"></i></button>
+                        </form>
+                        </a>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+        </nav>
+        
+        <!-- <partial name="_CookieConsentPartial" /> -->
+        <div class="container body-content" style="flex:1; background-color:#f2f2f2;">
+            @RenderBody()
+            
+        </div>
+        <footer style="heigth:auto;">
+                <div class="text-footer">
+                    <div class="block-text-footer">
+                        <span class="title-footer">@Localizer.Get(Resources.Help)</span>
+                        <span><a class="footer-drop-down">@Localizer.Get(Resources.Contact)</a></span>
+                    </div>
+                    <div class="block-text-footer">
+                        <span class="title-footer">@Localizer.Get(Resources.Legal)</span>
+                        <span><a class="footer-drop-down">@Localizer.Get(Resources.Policy)</a></span>
+                    </div>
+                </div>
+                <div class="contact-footer">
+                    <div class="block-text-footer">
+                        <span>mail@mail.com</span>
+                    </div>
+                    <div class="block-contact-footer">
+                        <span id="date"></span> - &copy; 
+                    </div>
+                </div>
+        </footer>
+    </div>
+    
+    
+    @RenderSection("Scripts", required: false)
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

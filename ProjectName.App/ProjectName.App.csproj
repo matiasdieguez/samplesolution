@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="newtonsoft.json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectName.Dto\ProjectName.Dto.csproj" />
+    <ProjectReference Include="..\ProjectName.Api.Client\ProjectName.Api.Client.csproj" />
+    <ProjectReference Include="..\ProjectName.Localization\ProjectName.Localization.csproj" />
+    <ProjectReference Include="..\ProjectName.Common\ProjectName.Common.csproj" />
+  </ItemGroup>
+
+</Project>
